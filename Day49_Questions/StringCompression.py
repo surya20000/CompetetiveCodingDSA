@@ -1,4 +1,4 @@
-# Question Link:- 
+# Question Link:- https://leetcode.com/problems/string-compression/?envType=study-plan-v2&envId=leetcode-75
 
 # Given an array of characters chars, compress it using the following algorithm:
 
