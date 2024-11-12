@@ -26,3 +26,17 @@
 
 # Solution 
 
+def maxOperations(nums, k):
+    count = 0
+    freq = {}
+    for num in nums:
+        target = k - num
+        if target in freq and freq[target] > 0:
+            count += 1
+            freq -= 1
+        else:
+            if num in freq:
+                freq[num] += 1
+            else:
+                freq[num] = 1
+    return num
