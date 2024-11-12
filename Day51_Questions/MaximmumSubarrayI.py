@@ -15,3 +15,14 @@
 
 # Input: nums = [5], k = 1
 # Output: 5.00000
+# Solution
+
+def findMaxAverage(nums, k):
+    
+    total = sum(nums[0:k])
+    maxTotal = total
+    for i in range(k, len(nums)):
+        total = nums[i - k] + nums[i]
+        maxTotal = max(total, maxTotal)
+    return maxTotal/float(k)
+        
