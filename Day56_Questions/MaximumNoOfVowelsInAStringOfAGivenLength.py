@@ -21,3 +21,12 @@
 # Input: s = "leetcode", k = 3
 # Output: 2
 # Explanation: "lee", "eet" and "ode" contain 2 vowels.
+
+# Solution
+def maxVowels(s, k):
+    max_count, counter = 0, 0
+    for i in range(len(s) - k + 1):
+        string = s[i:k]
+        counter = string.count('a') + string.count('e') + string.count('i') + string.count('o') + string.count('u')
+        max_count = max(max_count, counter)
+    return max_count
