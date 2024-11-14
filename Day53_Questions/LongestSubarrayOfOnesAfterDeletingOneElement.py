@@ -27,3 +27,22 @@
 
 # 1 <= nums.length <= 105
 # nums[i] is either 0 or 1.
+# Solution
+def longestSubarray(nums):
+    vis = []
+    count = 0
+    for i in range(len(nums)):
+        if nums[i] == 0:
+            vis.append(count)
+        else:
+            count += 1
+    if count is not 0:
+        vis.append(count)
+    if len(vis) == 0:
+        return len(nums) - 1
+    if len(vis) is 1:
+        return len(nums) - 1
+    max_sum = 0
+    for i in range(len(vis) - 1):
+        max_sum = max(max_sum, vis[i] + vis[i + 1])
+    return max_sum
