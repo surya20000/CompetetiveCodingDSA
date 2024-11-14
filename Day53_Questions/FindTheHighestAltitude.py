@@ -23,3 +23,13 @@
 # n == gain.length
 # 1 <= n <= 100
 # -100 <= gain[i] <= 100
+# Solution
+def largestAltitude(self, gain):
+    gain.insert(0, 0)
+    length = len(gain)
+    pfs = [0 for _ in range(length)]
+
+    for i in range(1, length):
+        pfs[i] = pfs[i - 1] + gain[i]
+    
+    return max(pfs)
