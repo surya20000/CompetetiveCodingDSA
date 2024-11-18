@@ -32,3 +32,19 @@
 # The pivot index is 0.
 # Left sum = 0 (no elements to the left of index 0)
 # Right sum = nums[1] + nums[2] = 1 + -1 = 0
+
+#Solution
+
+def pivotIndex(nums):
+    
+    leftSum, totalSum = 0, sum(nums)
+    
+    for i, num in enumerate(nums):
+        
+        rightSum = totalSum - leftSum - num
+        
+        if leftSum == rightSum:
+            return i
+        
+        leftSum += num
+    return i
