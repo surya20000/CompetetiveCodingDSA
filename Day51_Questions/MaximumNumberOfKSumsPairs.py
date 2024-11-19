@@ -39,4 +39,4 @@ def maxOperations(nums, k):
                 freq[num] += 1
             else:
                 freq[num] = 1
-    return num
+    return count
