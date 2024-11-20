@@ -36,3 +36,39 @@
 # Explanation:
 # There is only one node with a twin in the linked list having twin sum of 1 + 100000 = 100001
 
+# Solution 
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def pairSum(self, head):
+        """
+        :type head: Optional[ListNode]
+        :rtype: int
+        """
+        index = 1
+        n = 1
+        m = 0
+        node = head
+        while node:
+            n += 1
+            node = node.next
+        node = head
+        while index <= n // 2:
+            index += 1
+            node = node.next
+        prev = None
+        current = node
+        while current:
+            temp = current.next
+            current.next = prev
+            prev = current
+            current = temp
+        
+        while head and prev:
+            m = max(m, head.val + prev.val)
+            head = head.next
+            prev = prev.next
+        return m
