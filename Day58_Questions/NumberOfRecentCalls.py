@@ -25,3 +25,18 @@
 # recentCounter.ping(3001);  // requests = [1, 100, 3001], range is [1,3001], return 3
 # recentCounter.ping(3002);  // requests = [1, 100, 3001, 3002], range is [2,3002], return 3
 
+# Solution 
+class RecentCounter(object):
+
+    def __init__(self):
+        self.n=collections.deque()
+
+    def ping(self, t):
+        """
+        :type t: int
+        :rtype: int
+        """
+        self.n.append(t)
+        while self.n[0]<t-3000:
+            self.n.popleft()
+        return len(self.n)        
