@@ -20,3 +20,34 @@
 
 # Input: head = [2,1,3,5,6,4,7]
 # Output: [2,3,6,7,1,5,4]
+
+# Solution
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def oddEvenList(self, head):
+        """
+        :type head: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        """
+        if head == None or head.next == None : return head 
+        odd = ListNode(0) 
+        odd_ptr = odd
+        even = ListNode(0)
+        even_ptr = even 
+        idx = 1 
+        while head != None :
+            if idx % 2 == 0:
+                even_ptr.next = head
+                even_ptr = even_ptr.next
+            else:
+                odd_ptr.next = head
+                odd_ptr = odd_ptr.next
+            head = head.next
+            idx+=1
+        even_ptr.next = None
+        odd_ptr.next = even.next
+        return odd.next
