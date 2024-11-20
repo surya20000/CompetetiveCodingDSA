@@ -28,3 +28,12 @@
 # Input: s = "erase*****"
 # Output: ""
 # Explanation: The entire string is removed, so we return an empty string.
+# Solution 
+def removeStars(s):
+    stack = []
+    for char in s:
+        if char == "*":
+            stack.pop()
+        else:
+            stack.append(char)
+        return ''.join(stack)
