@@ -32,4 +32,31 @@
 # And the third senator comes from Dire and he can ban the first senator's right in round 1. 
 # And in round 2, the third senator can just announce the victory since he is the only guy in the senate who can vote.
 
-
+# Solution 
+class Solution(object):
+    def predictPartyVictory(self, senate):
+        """
+        :type senate: str
+        :rtype: str
+        """
+        s=collections.deque(senate)
+        countR,countD=0,0
+        d,r=senate.count('D'),senate.count('R')
+        while(r!=0):
+            if d==0:
+                return "Radiant"
+            elif countR>0 and s[0]=='D':
+                s.popleft()
+                countR-=1
+                d-=1
+            elif countD>0 and s[0]=='R':
+                s.popleft()
+                countD-=1
+                r-=1
+            elif s[0]=='R':
+                countR+=1
+                s.rotate(-1)
+            else:
+                countD+=1
+                s.rotate(-1)
+        return "Dire"
